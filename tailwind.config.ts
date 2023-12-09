@@ -55,6 +55,7 @@ module.exports = {
         'orange2': '#FF9209',
         'orange3': '#FFD099',
         'gray': '#8692A6',
+        'custom-black': '#001E1D',
       },
       borderRadius: {
         lg: 'var(--radius)',
