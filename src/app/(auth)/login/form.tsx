@@ -52,7 +52,6 @@ export const LoginForm = () => {
         callbackUrl,
         redirect: false,
       });
-      console.log(res);
       if (!res?.error) {
         router.push(callbackUrl);
         toast({

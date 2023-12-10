@@ -23,5 +23,17 @@ model User {
   name      String?
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+  quizzes   QuizTaken[]
 }
 
+
+model QuizTaken {
+  id        Int @id @default(autoincrement())
+  author    User? @relation(fields: [authorId], references: [id])
+  authorId  Int
+  quizTitle      String
+  numberOfQuestions Int
+  numberOfCorrectAnswers Int
+  percentageScored Float
+  takenAt DateTime @default(now())
+}

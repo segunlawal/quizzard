@@ -21,6 +21,7 @@ import { Button } from '@/components/ui/button';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useState } from 'react';
 import { categoryOptions } from '@/lib/utils';
+import { useRouter } from 'next/navigation';
 
 const formSchema = z.object({
   category: z.string().min(1, { message: 'Select a category' }),
@@ -31,6 +32,7 @@ const formSchema = z.object({
 });
 
 const StartQuizForm = () => {
+  const router = useRouter();
   const [buttonDisabled, setButtonDisabled] = useState(false);
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -41,11 +43,35 @@ const StartQuizForm = () => {
   });
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
-    console.log(values);
+    let categoryNumber;
+
+    switch (values.category) {
+      case 'all':
+        categoryNumber = 0;
+        break;
+      case 'general':
+        categoryNumber = 9;
+        break;
+      case 'sports':
+        categoryNumber = 21;
+        break;
+      case 'history':
+        categoryNumber = 23;
+        break;
+      case 'science':
+        categoryNumber = 17;
+        break;
+      case 'entertainment':
+        categoryNumber = 12;
+        break;
+    }
+    router.push(
+      `/dashboard/quiz/begin-quiz?category=${categoryNumber}&numberOfQuestions=${values.numberOfQuestions}`,
+    );
   };
 
   return (
-    <div className="shadow-xl p-7 bg-white rounded-xl mt-10">
+    <div className="shadow-xl p-7 bg-white rounded-xl mt-10 sm:mr-20">
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)}>
           <FormField
@@ -103,7 +129,7 @@ const StartQuizForm = () => {
 
           <Button
             type="submit"
-            className="w-full mt-5 rounded-lg bg-custom-black hover:bg-custom-black py-3 disabled:bg-gray"
+            className="mt-5 rounded-lg bg-custom-black hover:bg-custom-black py-3 disabled:bg-gray"
             disabled={buttonDisabled}
           >
             Start Quiz
