@@ -1,8 +1,8 @@
 import { PrismaClient } from '@prisma/client';
 import { authOptions } from '@/lib/authOptions';
 import { getServerSession } from 'next-auth';
-import { DataTable } from '@/components/ui/data-table';
 import { columns } from './columns';
+import { DataTable } from './data-table';
 
 const prisma = new PrismaClient();
 export default async function QuizHistory() {
@@ -12,8 +12,6 @@ export default async function QuizHistory() {
       takerId: Number(session?.user?.id),
     },
   });
-
-  console.log(allQuizzes);
 
   // const cardStyle = {
   //   background:

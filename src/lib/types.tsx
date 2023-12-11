@@ -25,3 +25,11 @@ interface QuizTaken {
   percentageScored: number;
   takenAt: Date;
 }
+
+interface QuizSummary {
+  quizTitle: string;
+  total: number;
+  averagePercentage: number;
+  highestPercentage: number;
+  lowestPercentage: number;
+}

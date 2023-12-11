@@ -77,7 +77,7 @@ const QuizQuestions = ({ data, category, takerId, takerName }: Props) => {
             quizTitle: category as string,
             numberOfQuestions: data.length,
             numberOfCorrectAnswers: result.score,
-            percentageScored,
+            percentageScored: Number(percentageScored),
             takerId: Number(takerId),
             takerName,
           }),

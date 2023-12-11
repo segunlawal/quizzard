@@ -110,7 +110,9 @@ const Sidebar = () => {
       </nav>
       <button
         className="pb-3 flex items-center gap-x-2 text-sm text-white"
-        onClick={() => signOut()}
+        onClick={() => {
+          signOut();
+        }}
       >
         <ArrowLeftOnRectangleIcon className="h-6 w-6" />
         Logout

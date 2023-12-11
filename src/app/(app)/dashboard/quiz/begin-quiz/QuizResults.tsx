@@ -12,7 +12,6 @@ type Props = {
 
 const QuizResults = (props: Props) => {
   const { data, result, userChoice } = props;
-  // console.log(userChoice);
   const centScored = ((result.score / data.length) * 100).toFixed(2);
 
   const correctionsMade = data.map((oneQuestion, index) => (

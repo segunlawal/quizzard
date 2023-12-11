@@ -4,55 +4,51 @@ import { convertCategoryNumberToTitle, formatDate } from '@/lib/utils';
 import { ColumnDef } from '@tanstack/react-table';
 import { ArrowUpDown, MoreHorizontal } from 'lucide-react';
 
-export const columns: ColumnDef<QuizTaken>[] = [
+export const columns: ColumnDef<QuizSummary>[] = [
   {
     accessorKey: 'quizTitle',
-    header: () => <div className="">Quiz Title</div>,
-    cell: ({ row }) => {
-      return (
-        <div className="">
-          {convertCategoryNumberToTitle(row.getValue('quizTitle'))}
-        </div>
-      );
-    },
+    header: 'Quiz Title',
   },
   {
-    accessorKey: 'percentageScored',
+    accessorKey: 'total',
     header: ({ column }) => {
       return (
         <button
           className="flex items-center gap-1"
           onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}
         >
-          Score (%)
+          Quizzes taken
           <ArrowUpDown className="h-4 w-4" />
         </button>
       );
     },
-    cell: ({ row }) => {
-      const amount = row.getValue('percentageScored') as number;
-
-      return <div className="font-medium text-blue">{amount.toFixed(2)}</div>;
-    },
   },
   {
-    accessorKey: 'takenAt',
+    accessorKey: 'highestPercentage',
     header: ({ column }) => {
       return (
         <button
           className="flex items-center gap-1"
           onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}
         >
-          Date Taken (GMT +1)
+          Highest Score
           <ArrowUpDown className="h-4 w-4" />
         </button>
       );
     },
-    cell: ({ row }) => {
-      const amount = row.getValue('takenAt');
-      const formatted = amount as Date;
-
-      return <div className="">{formatDate(formatted.toString())}</div>;
+  },
+  {
+    accessorKey: 'lowestPercentage',
+    header: ({ column }) => {
+      return (
+        <button
+          className="flex items-center gap-1"
+          onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}
+        >
+          Lowest Score
+          <ArrowUpDown className="h-4 w-4" />
+        </button>
+      );
     },
   },
 ];

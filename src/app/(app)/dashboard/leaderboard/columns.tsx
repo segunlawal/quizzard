@@ -1,15 +1,15 @@
 'use client';
 
-import { convertCategoryNumberToTitle } from '@/lib/utils';
+import { convertCategoryNumberToTitle, formatDate } from '@/lib/utils';
 import { ColumnDef } from '@tanstack/react-table';
 
 export const columns: ColumnDef<QuizTaken>[] = [
   {
-    accessorKey: 'id',
+    accessorKey: 'rank',
     header: () => <div className="">Rank</div>,
     cell: (props) => {
       return (
-        <div className="font-medium">
+        <div className="">
           {props?.table?.getSortedRowModel()?.flatRows?.indexOf(props?.row) + 1}
         </div>
       );
@@ -24,7 +24,7 @@ export const columns: ColumnDef<QuizTaken>[] = [
     header: () => <div className="">Quiz Title</div>,
     cell: ({ row }) => {
       return (
-        <div className="font-medium">
+        <div className="">
           {convertCategoryNumberToTitle(row.getValue('quizTitle'))}
         </div>
       );
@@ -36,18 +36,17 @@ export const columns: ColumnDef<QuizTaken>[] = [
     cell: ({ row }) => {
       const amount = row.getValue('percentageScored') as number;
 
-      return <div className="font-medium">{amount.toFixed(2)}</div>;
+      return <div className="font-medium text-blue">{amount.toFixed(2)}</div>;
     },
   },
   {
     accessorKey: 'takenAt',
-    // header: 'Date Taken',
-    header: () => <div className="">Date Taken</div>,
+    header: () => <div className="">Date Taken (GMT +1)</div>,
     cell: ({ row }) => {
       const amount = row.getValue('takenAt');
       const formatted = amount as Date;
 
-      return <div className="font-medium">{formatted.toString()}</div>;
+      return <div className="">{formatDate(formatted.toString())}</div>;
     },
   },
 ];

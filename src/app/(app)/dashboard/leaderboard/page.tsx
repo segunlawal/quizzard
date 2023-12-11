@@ -1,12 +1,12 @@
 import { PrismaClient } from '@prisma/client';
-import { DataTable } from '@/components/ui/data-table';
 import { columns } from './columns';
+import { sortByPercentageScore } from '@/lib/utils';
+import { DataTable } from './data-table';
 
 const prisma = new PrismaClient();
 export default async function LeaderBoard() {
   const allQuizzes = await prisma.quizTaken.findMany();
-
-  console.log(allQuizzes);
+  const sortedQuizzes = sortByPercentageScore(allQuizzes);
 
   // const cardStyle = {
   //   background:
@@ -15,8 +15,7 @@ export default async function LeaderBoard() {
 
   return (
     <div className="lg:pl-56 px-3 py-10 min-h-screen bg-indigo-100 -z-20">
-      <h2>Leaderboard</h2>
-      <DataTable columns={columns} data={allQuizzes} />
+      <DataTable columns={columns} data={sortedQuizzes} />
     </div>
   );
 }

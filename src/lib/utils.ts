@@ -6,12 +6,22 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 export const categoryOptions = [
-  { value: 'all', label: 'All Categories' },
+  { value: 'all', label: 'Mixed Topics' },
   { value: 'general', label: 'General Knowledge' },
   { value: 'sports', label: 'Sports' },
   { value: 'history', label: 'History' },
   { value: 'science', label: 'Science' },
   { value: 'entertainment', label: 'Entertainment' },
+];
+
+export const categoryOptions2 = [
+  { value: 'all', label: 'All' },
+  { value: '0', label: 'Mixed Topics' },
+  { value: '9', label: 'General Knowledge' },
+  { value: '21', label: 'Sports' },
+  { value: '23', label: 'History' },
+  { value: '17', label: 'Science' },
+  { value: '12', label: 'Entertainment' },
 ];
 
 export const replaceSpecialCharacters = (str: string) => {
@@ -60,7 +70,7 @@ export function addShuffledChoices(questions: any[]): any[] {
 export function convertCategoryNumberToTitle(category: string) {
   switch (category) {
     case '0':
-      return 'All Categories';
+      return 'Mixed';
     case '9':
       return 'General Knowledge';
     case '21':
@@ -74,4 +84,33 @@ export function convertCategoryNumberToTitle(category: string) {
     default:
       return 'Others';
   }
+}
+
+export function formatDate(inputDate: string): string {
+  const date = new Date(inputDate);
+
+  const options: Intl.DateTimeFormatOptions = {
+    year: 'numeric',
+    month: 'short',
+    day: 'numeric',
+    hour: 'numeric',
+    minute: 'numeric',
+    hour12: true,
+  };
+
+  return date.toLocaleString('en-US', options);
+}
+
+export function sortByPercentageScore(results: QuizTaken[]): QuizTaken[] {
+  const sortedResults = results.sort((a, b) => {
+    if (b.percentageScored !== a.percentageScored) {
+      // If percentages are different, sort by percentageScored in descending order
+      return b.percentageScored - a.percentageScored;
+    } else {
+      // If percentages are the same, sort by takenAt in descending order
+      return b.takenAt.getTime() - a.takenAt.getTime();
+    }
+  });
+
+  return sortedResults;
 }
