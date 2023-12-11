@@ -8,7 +8,8 @@ export async function POST(req: Request) {
       numberOfQuestions,
       numberOfCorrectAnswers,
       percentageScored,
-      authorId,
+      takerId,
+      takerName,
     } = await req.json();
 
     const quiz = await prisma.quizTaken.create({
@@ -17,7 +18,12 @@ export async function POST(req: Request) {
         numberOfQuestions,
         numberOfCorrectAnswers,
         percentageScored,
-        authorId,
+        takerId,
+        takerName,
+      },
+      include: {
+        takerIdentity: true,
+        taker: true,
       },
     });
 

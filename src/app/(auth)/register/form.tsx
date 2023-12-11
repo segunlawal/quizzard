@@ -99,12 +99,12 @@ export const RegisterForm = () => {
             name="fullName"
             render={({ field }) => (
               <FormItem className="mt-5">
-                <FormLabel className="">Full Name</FormLabel>
+                <FormLabel className="">Username</FormLabel>
                 <FormControl>
                   <div>
                     <Input
                       type="text"
-                      placeholder="Full Name"
+                      placeholder="Username"
                       {...field}
                       className="rounded-lg py-3 -mt-1 px-2 placeholder:text-sm placeholder:opacity-80 focus:outline-none focus-visible:ring-0 focus-visible:ring-offset-0"
                     />

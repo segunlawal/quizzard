@@ -15,3 +15,13 @@ interface Session {
     id: string;
   };
 }
+
+interface QuizTaken {
+  id: number;
+  takerId: number | null;
+  quizTitle: String;
+  numberOfQuestions: number;
+  numberOfCorrectAnswers: number;
+  percentageScored: number;
+  takenAt: Date;
+}

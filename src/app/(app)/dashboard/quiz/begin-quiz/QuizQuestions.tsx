@@ -9,10 +9,11 @@ import { useToast } from '@/components/ui/use-toast';
 type Props = {
   data: Question[];
   category: string | string[] | undefined;
-  authorId: string;
+  takerId: string;
+  takerName: string;
 };
 
-const QuizQuestions = ({ data, category, authorId }: Props) => {
+const QuizQuestions = ({ data, category, takerId, takerName }: Props) => {
   const { toast } = useToast();
   const [isTimerPlaying, setIsTimerPlaying] = useState<boolean>(true);
   const [timerOver, setTimerOver] = useState<boolean>(false);
@@ -67,7 +68,7 @@ const QuizQuestions = ({ data, category, authorId }: Props) => {
     if (activeQuestion !== data.length - 1) {
       setActiveQuestion(activeQuestion + 1);
     } else {
-      const percentageScored = (result.score / data.length) * 100;
+      const percentageScored = ((result.score / data.length) * 100).toFixed(2);
 
       try {
         const res = await fetch('/api/submit-quiz', {
@@ -77,7 +78,8 @@ const QuizQuestions = ({ data, category, authorId }: Props) => {
             numberOfQuestions: data.length,
             numberOfCorrectAnswers: result.score,
             percentageScored,
-            authorId: Number(authorId),
+            takerId: Number(takerId),
+            takerName,
           }),
           headers: {
             'Content-Type': 'application/json',

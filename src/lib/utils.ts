@@ -56,3 +56,22 @@ export function addShuffledChoices(questions: any[]): any[] {
 
   return questionsWithChoices;
 }
+
+export function convertCategoryNumberToTitle(category: string) {
+  switch (category) {
+    case '0':
+      return 'All Categories';
+    case '9':
+      return 'General Knowledge';
+    case '21':
+      return 'Sports';
+    case '23':
+      return 'History';
+    case '17':
+      return 'Science';
+    case '12':
+      return 'Entertainment';
+    default:
+      return 'Others';
+  }
+}

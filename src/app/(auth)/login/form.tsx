@@ -53,7 +53,7 @@ export const LoginForm = () => {
         redirect: false,
       });
       if (!res?.error) {
-        router.push(callbackUrl);
+        router.push(callbackUrl || '/dashboard');
         toast({
           action: (
             <span className="text-blue w-full flex items-center">

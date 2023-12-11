@@ -23,7 +23,8 @@ const page = async (props: Props) => {
       <QuizQuestions
         data={shuffledData}
         category={category}
-        authorId={session?.user?.id}
+        takerId={session?.user?.id}
+        takerName={session?.user?.name}
       />
     </div>
   );

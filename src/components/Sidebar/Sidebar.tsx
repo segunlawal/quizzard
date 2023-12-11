@@ -109,7 +109,7 @@ const Sidebar = () => {
         </ul>
       </nav>
       <button
-        className="lg:pb-3 pb-16 flex items-center gap-x-2 text-sm text-white"
+        className="pb-3 flex items-center gap-x-2 text-sm text-white"
         onClick={() => signOut()}
       >
         <ArrowLeftOnRectangleIcon className="h-6 w-6" />
@@ -119,7 +119,7 @@ const Sidebar = () => {
   );
 
   return (
-    <div className="">
+    <div className="z-20">
       <div className="hidden lg:fixed lg:inset-y-0 lg:flex lg:flex-col">
         {drawer}
       </div>
