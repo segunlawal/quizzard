@@ -109,15 +109,15 @@ const QuizQuestions = ({ data, category, takerId, takerName }: Props) => {
   };
 
   return (
-    <div className="lg:pl-56 px-3 py-10 min-h-[92.9vh] bg-indigo-100 text-custom-black">
+    <div className="lg:pl-56 px-3 py-10 min-h-[93.4vh] bg-indigo-100 text-custom-black">
       {!showResult ? (
         <div>
           <div className="xl:mx-56 lg:mx-36 sm:mx-5 flex justify-end">
             <CountdownCircleTimer
               isPlaying={isTimerPlaying}
-              duration={20}
+              duration={15}
               colors={['#004777', '#F7B801', '#A30000', '#A30000']}
-              colorsTime={[20, 10, 5, 0]}
+              colorsTime={[15, 10, 5, 0]}
               onComplete={() => {
                 setChecked(true);
                 setTimerOver(true);
@@ -163,7 +163,12 @@ const QuizQuestions = ({ data, category, takerId, takerName }: Props) => {
                 </ul>
               ))}
             </div>
-            <button type="button" onClick={() => handleNextQuestion()}>
+            <button
+              type="button"
+              disabled={!checked}
+              onClick={() => handleNextQuestion()}
+              className="bg-blue text-white disabled:bg-gray py-2 px-5 rounded-sm"
+            >
               Next
             </button>
           </div>

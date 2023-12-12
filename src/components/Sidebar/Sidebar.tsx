@@ -4,8 +4,8 @@ import {
   UserGroupIcon,
   HomeIcon,
   ArrowLeftOnRectangleIcon,
-  Cog6ToothIcon,
   PresentationChartLineIcon,
+  UserIcon,
 } from '@heroicons/react/24/outline';
 import Link from 'next/link';
 import { useSelectedLayoutSegment } from 'next/navigation';
@@ -54,10 +54,10 @@ const Sidebar = () => {
       current: `/${segment}` === '/leaderboard',
     },
     {
-      name: 'Settings',
-      href: '/dashboard/settings',
-      icon: Cog6ToothIcon,
-      current: `/${segment}` === '/settings',
+      name: 'Profile',
+      href: '/dashboard/profile',
+      icon: UserIcon,
+      current: `/${segment}` === '/profile',
     },
   ];
 

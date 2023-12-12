@@ -15,7 +15,6 @@ export default async function Settings() {
     },
   });
   const quizStats = groupQuizResultsByTitle(allQuizzes);
-  console.log(quizStats);
 
   return (
     <div className="lg:pl-56 px-3 py-10 min-h-screen bg-indigo-100">

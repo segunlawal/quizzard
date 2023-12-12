@@ -24,7 +24,7 @@ import { categoryOptions } from '@/lib/utils';
 import { useRouter } from 'next/navigation';
 
 const formSchema = z.object({
-  category: z.string().min(1, { message: 'Select a category' }),
+  category: z.string().min(1, { message: 'Select a quiz' }),
   numberOfQuestions: z.coerce
     .number()
     .min(10, { message: 'Questions must be between 10 and 20' })
@@ -71,7 +71,7 @@ const StartQuizForm = () => {
   };
 
   return (
-    <div className="shadow-xl p-7 bg-white rounded-xl mt-10 sm:mr-20">
+    <div className="shadow-md p-7 bg-white rounded-md mt-10">
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)}>
           <FormField
@@ -86,7 +86,7 @@ const StartQuizForm = () => {
                     defaultValue={field.value}
                   >
                     <SelectTrigger>
-                      <SelectValue placeholder="Select a category" />
+                      <SelectValue placeholder="Select an available quiz" />
                     </SelectTrigger>
                     <SelectContent>
                       {categoryOptions.map((category) => (
@@ -129,7 +129,7 @@ const StartQuizForm = () => {
 
           <Button
             type="submit"
-            className="mt-5 rounded-lg bg-custom-black hover:bg-custom-black py-3 disabled:bg-gray"
+            className="mt-5 rounded-lg bg-blue hover:bg-blue py-3 px-10 disabled:bg-gray"
             disabled={buttonDisabled}
           >
             Start Quiz

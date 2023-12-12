@@ -7,7 +7,6 @@ import {
   flexRender,
   getCoreRowModel,
   useReactTable,
-  getPaginationRowModel,
 } from '@tanstack/react-table';
 
 import {
@@ -19,16 +18,7 @@ import {
   TableRow,
 } from '@/components/ui/table';
 
-import { Button } from '@/components/ui/button';
 import { useState } from 'react';
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from '@/components/ui/select';
-import { categoryOptions2 } from '@/lib/utils';
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
@@ -45,7 +35,6 @@ export function DataTable<TData, TValue>({
     data,
     columns,
     getCoreRowModel: getCoreRowModel(),
-    getPaginationRowModel: getPaginationRowModel(),
     onColumnFiltersChange: setColumnFilters,
     getFilteredRowModel: getFilteredRowModel(),
     state: {
@@ -54,41 +43,7 @@ export function DataTable<TData, TValue>({
   });
 
   return (
-    <div className="shadow-xl p-7 bg-white rounded-xl">
-      <div className="flex flex-wrap items-center justify-between py-4">
-        <div className="text-blue">
-          <h2 className="text-lg font-bold">LEADERBOARD</h2>
-          {/* <p className="text-sm -mt-1">All Time</p> */}
-        </div>
-        <Select
-          value={
-            (table.getColumn('quizTitle')?.getFilterValue() as string) ?? ''
-          }
-          onValueChange={(event) => {
-            if (event === 'all') {
-              // Handle the "All" option differently
-              table.getColumn('quizTitle')?.setFilterValue(undefined);
-            } else {
-              table.getColumn('quizTitle')?.setFilterValue(event);
-            }
-          }}
-        >
-          <SelectTrigger className="w-96">
-            <SelectValue placeholder="Sort by title" />
-          </SelectTrigger>
-          <SelectContent>
-            {categoryOptions2.map((category) => (
-              <SelectItem
-                key={category.value}
-                value={category.value}
-                className="cursor-pointer"
-              >
-                {category.label}
-              </SelectItem>
-            ))}
-          </SelectContent>
-        </Select>
-      </div>
+    <div className="mt-4 ">
       <div className="rounded-md border w-full">
         <Table>
           <TableHeader>
@@ -138,24 +93,6 @@ export function DataTable<TData, TValue>({
             )}
           </TableBody>
         </Table>
-      </div>
-      <div className="flex items-center justify-end space-x-2 py-4">
-        <Button
-          variant="outline"
-          size="sm"
-          onClick={() => table.previousPage()}
-          disabled={!table.getCanPreviousPage()}
-        >
-          Previous
-        </Button>
-        <Button
-          variant="outline"
-          size="sm"
-          onClick={() => table.nextPage()}
-          disabled={!table.getCanNextPage()}
-        >
-          Next
-        </Button>
       </div>
     </div>
   );

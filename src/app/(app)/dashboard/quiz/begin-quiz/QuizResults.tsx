@@ -1,4 +1,5 @@
 import { replaceSpecialCharacters } from '@/lib/utils';
+import { useRouter } from 'next/navigation';
 
 type Props = {
   data: Question[];
@@ -13,16 +14,17 @@ type Props = {
 const QuizResults = (props: Props) => {
   const { data, result, userChoice } = props;
   const centScored = ((result.score / data.length) * 100).toFixed(2);
+  const router = useRouter();
 
   const correctionsMade = data.map((oneQuestion, index) => (
     <div key={`${oneQuestion.correct_answer} ${index}`} className="">
-      <h3 className="font-bold">
+      <h3 className="font-semibold">
         {index + 1}. {replaceSpecialCharacters(oneQuestion.question)}
       </h3>
 
       {oneQuestion.choices.map((answer) => (
         <ul key={answer}>
-          <li className="border-2 py-3 border-custom-black px-5 my-3 rounded-md cursor-pointer">
+          <li className="border-2 py-3 border-custom-black px-5 my-3 rounded-md">
             <span className="flex gap-3">
               {replaceSpecialCharacters(answer)}
               {answer === data[index].correct_answer && userChoice[index] && (
@@ -42,7 +44,23 @@ const QuizResults = (props: Props) => {
                 </svg>
               )}
               {answer === data[index].correct_answer && !userChoice[index] && (
-                <p>no answer</p>
+                <div className="flex gap-x-2">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    strokeWidth={1.5}
+                    stroke="currentColor"
+                    className="w-6 h-6 bg-green-600"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M4.5 12.75l6 6 9-13.5"
+                    />
+                  </svg>
+                  <p className="text-xs text-red-400">time ran out</p>
+                </div>
               )}
               {answer !== data[index].correct_answer &&
                 answer === userChoice[index] && (
@@ -99,16 +117,17 @@ const QuizResults = (props: Props) => {
               <p>1</p>
             </div> */}
           </div>
-          <button className="bg-custom-black text-white rounded-2xl py-3 mt-4 w-full">
+          <button
+            onClick={() => router.push('/dashboard')}
+            className="bg-custom-black text-white rounded-2xl py-3 mt-4 w-full"
+          >
             Continue
           </button>
         </div>
       </div>
 
-      <div className="mt-5">
-        <button type="button" className="text-lg">
-          Here is how you answered
-        </button>
+      <div className="my-7">
+        <button type="button">SUMMARY</button>
         <div className="grid sm:grid-cols-2 gap-5">{correctionsMade}</div>
       </div>
     </div>
