@@ -5,8 +5,15 @@ import { getServerSession } from 'next-auth';
 import { redirect } from 'next/navigation';
 import { authOptions } from '@/lib/authOptions';
 
-export default async function Login() {
+type Props = {
+  params: {};
+  searchParams: { [key: string]: string | undefined };
+};
+
+export default async function Login(props: Props) {
   const session = await getServerSession(authOptions);
+  const searchParams = props.searchParams;
+  const prevEmail = searchParams.email;
 
   if (session) {
     redirect('/dashboard');
@@ -27,7 +34,7 @@ export default async function Login() {
       <div className="mt-5 w-full sm:w-[500px]">
         <div className="sm:shadow-xl p-7 sm:bg-white rounded-xl">
           <h1 className="font-semibold text-xl">Log in</h1>
-          <LoginForm />
+          <LoginForm prevEmail={prevEmail} />
           <p className="text-center mt-5 text-gray text-sm">
             Don&apos;t have an account?{' '}
             <Link href="/register" className="text-blue hover:underline">

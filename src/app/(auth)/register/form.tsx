@@ -68,7 +68,7 @@ export const RegisterForm = () => {
             </span>
           ),
         });
-        router.push('/login');
+        router.push(`/login?email=${email}`);
         // redirect to dashboard
       } else {
         throw await res.json();

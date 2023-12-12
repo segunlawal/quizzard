@@ -25,7 +25,11 @@ const formSchema = z.object({
     .min(8, { message: 'Password must be 8 or more characters long' }),
 });
 
-export const LoginForm = () => {
+type Props = {
+  prevEmail: string | undefined;
+};
+
+export const LoginForm = ({ prevEmail }: Props) => {
   const { toast } = useToast();
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -36,7 +40,7 @@ export const LoginForm = () => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      email: '',
+      email: prevEmail || '',
       password: '',
     },
   });
