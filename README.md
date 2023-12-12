@@ -14,11 +14,11 @@ pnpm dev
 bun dev
 ```
 
-# (https://quizzard-nu.vercel.app/)
+# (https://quizzardpro.vercel.app/)
 
 ### LIVE LINK [QUIZZARD]
 
-https://payriz.vercel.app/
+https://quizzardpro.vercel.app/
 
 ## Tech Stack
 

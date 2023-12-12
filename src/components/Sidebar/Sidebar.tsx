@@ -61,16 +61,8 @@ const Sidebar = () => {
     },
   ];
 
-  // const drawerStyle = {
-  //   background:
-  //     'linear-gradient(180deg, rgba(0, 117, 255, 0.85) 0%, rgba(245, 245, 245, 1) 100%)',
-  // };
-
   const drawer = (
-    <div
-      // style={drawerStyle}
-      className="flex grow flex-col gap-y-5 overflow-y-auto bg-custom-black px-6 pb-4 border-r-2 h-screen"
-    >
+    <div className="flex grow flex-col gap-y-5 overflow-y-auto bg-custom-black px-6 pb-4 border-r-2 h-screen">
       <Link href="/" className="flex h-16 shrink-0 items-center gap-x-3">
         <Image
           src="/assets/dashboard-logo.svg"

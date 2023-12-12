@@ -33,7 +33,7 @@ const QuizQuestions = ({ data, category, takerId, takerName }: Props) => {
     wrongAnswers: 0,
   });
 
-  const { question, correct_answer, choices } = data[activeQuestion];
+  const { correct_answer, choices } = data[activeQuestion];
 
   const onAnswerSelected = (answer: string, index: number) => {
     setChecked(true);
@@ -44,7 +44,6 @@ const QuizQuestions = ({ data, category, takerId, takerName }: Props) => {
     } else {
       setSelectedAnswer(false);
     }
-    // setSelectedAnswer(answer);
   };
 
   const handleNextQuestion = async () => {

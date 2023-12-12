@@ -58,7 +58,6 @@ export function DataTable<TData, TValue>({
       <div className="flex flex-wrap items-center justify-between py-4">
         <div className="text-blue">
           <h2 className="text-lg font-bold">LEADERBOARD</h2>
-          {/* <p className="text-sm -mt-1">All Time</p> */}
         </div>
         <Select
           value={

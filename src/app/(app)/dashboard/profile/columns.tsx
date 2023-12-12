@@ -1,6 +1,5 @@
 'use client';
 
-import { convertCategoryNumberToTitle, formatDate } from '@/lib/utils';
 import { ColumnDef } from '@tanstack/react-table';
 import { ArrowUpDown, MoreHorizontal } from 'lucide-react';
 

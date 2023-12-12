@@ -43,7 +43,7 @@ async function getData(props: Props) {
     `https://opentdb.com/api.php?amount=${amount}${
       category !== '0' ? `&category=${category}` : ''
     }`,
-    // { cache: 'no-store' },
+    { cache: 'no-store' },
   );
 
   if (!res.ok) {

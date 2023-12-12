@@ -112,10 +112,6 @@ const QuizResults = (props: Props) => {
               <p className="text-red-600 font-semibold">Wrong Answers</p>
               <p>{result.wrongAnswers}</p>
             </div>
-            {/* <div className="flex justify-between items-center bg-indigo-50 px-3 py-1 rounded-sm">
-              <p className="text-red-600 font-semibold">Unanswered</p>
-              <p>1</p>
-            </div> */}
           </div>
           <button
             onClick={() => router.push('/dashboard')}

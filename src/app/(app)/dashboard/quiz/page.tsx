@@ -1,4 +1,4 @@
-import StartQuizForm from './StartQuizForm';
+import StartQuizForm from './start-quiz-form';
 
 export default async function Quiz() {
   return (

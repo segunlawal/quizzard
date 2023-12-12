@@ -135,7 +135,6 @@ export default function NavBar({ session }: Props) {
             <Link
               href="/login"
               className="font-semibold py-2 px-4  text-black rounded-md leading-5"
-              // onClick={() => setShowModal(true)}
             >
               Log In
             </Link>
