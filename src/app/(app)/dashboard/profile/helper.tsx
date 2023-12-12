@@ -1,4 +1,7 @@
 export function calculateAveragePercentage(quizResults: QuizTaken[]): number {
+  if (quizResults.length === 0) {
+    return 0;
+  }
   const totalPercentage = quizResults.reduce(
     (sum, result) => sum + result.percentageScored,
     0,
@@ -8,6 +11,9 @@ export function calculateAveragePercentage(quizResults: QuizTaken[]): number {
 }
 
 export function findHighestPercentage(quizResults: QuizTaken[]): number {
+  if (quizResults.length === 0) {
+    return 0;
+  }
   const highestPercentage = Math.max(
     ...quizResults.map((result) => result.percentageScored),
   );
@@ -15,6 +21,9 @@ export function findHighestPercentage(quizResults: QuizTaken[]): number {
 }
 
 export function findLowestPercentage(quizResults: QuizTaken[]): number {
+  if (quizResults.length === 0) {
+    return 0;
+  }
   const lowestPercentage = Math.min(
     ...quizResults.map((result) => result.percentageScored),
   );

@@ -65,7 +65,7 @@ export default async function Dashboard() {
             <DataTable columns={columns} data={topQuizzes} />
           </div>
         </div>
-        <div className="bg-white shadow-sm rounded-sm px-5 py-3 col-span-3 md:col-span-1 md:mt-auto mt-7">
+        <div className="bg-white shadow-sm rounded-sm px-5 py-3 col-span-3 md:col-span-1 md:mt-0 mt-7">
           <h2 className="text-blue">Your Personal Best</h2>
           <Link
             href="/dashboard/leaderboard"

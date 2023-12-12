@@ -11,7 +11,7 @@ const PersonalBest = ({ personalHighest }: Props) => {
     <div className="mx-auto md:w-auto w-40 flex justify-center">
       <CircularProgressbar
         value={personalHighest}
-        strokeWidth={5}
+        strokeWidth={4}
         text={`${personalHighest}%`}
         styles={buildStyles({
           textColor: '#2B3499',

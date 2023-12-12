@@ -1,10 +1,11 @@
 'use client';
 
-import { replaceSpecialCharacters } from '@/lib/utils';
+import { decode } from 'html-entities';
 import { useState } from 'react';
 import QuizResults from './QuizResults';
 import { CountdownCircleTimer } from 'react-countdown-circle-timer';
 import { useToast } from '@/components/ui/use-toast';
+import { Progress } from '@/components/ui/progress';
 
 type Props = {
   data: Question[];
@@ -134,15 +135,18 @@ const QuizQuestions = ({ data, category, takerId, takerName }: Props) => {
           </div>
           <div className="shadow-xl p-7 bg-white rounded-xl xl:mx-56 lg:mx-36 sm:mx-5 mt-2">
             <div className="flex justify-between items-center">
-              <div>
-                <span className="font-semibold">{activeQuestion + 1}</span> of{' '}
-                <span className="font-semibold">{data.length}</span> questions
+              <div className="">
+                <Progress value={((activeQuestion + 1) / data.length) * 100} />
+                <div>
+                  <span className="font-semibold">{activeQuestion + 1}</span> of{' '}
+                  <span className="font-semibold">{data.length}</span> questions
+                </div>
               </div>
               {timerOver && <p className="text-red-400">Time up!</p>}
             </div>
             <div>
-              <h3 className="font-bold text-xl">
-                {replaceSpecialCharacters(data[activeQuestion].question)}
+              <h3 className="font-bold text-xl mt-2">
+                {decode(data[activeQuestion].question)}
               </h3>
               {choices.map((answer, index) => (
                 <ul
@@ -159,7 +163,7 @@ const QuizQuestions = ({ data, category, takerId, takerName }: Props) => {
                   } ${answer === correct_answer && checked && 'bg-green-400'}`}
                   onClick={() => onAnswerSelected(answer, index)}
                 >
-                  <li className="px-5">{replaceSpecialCharacters(answer)}</li>
+                  <li className="px-5">{decode(answer)}</li>
                 </ul>
               ))}
             </div>

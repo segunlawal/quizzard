@@ -49,7 +49,7 @@ export function DataTable<TData, TValue>({
   });
 
   return (
-    <div className="shadow-xl p-7 bg-white rounded-xl">
+    <div className="shadow-md p-7 bg-white rounded-md">
       <div className="rounded-md border w-full">
         <Table>
           <TableHeader>

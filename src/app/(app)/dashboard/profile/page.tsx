@@ -18,8 +18,8 @@ export default async function Settings() {
 
   return (
     <div className="lg:pl-56 px-3 py-10 min-h-screen bg-indigo-100">
-      <div className="shadow-lg p-7 bg-white rounded-xl">
-        <h2 className="text-lg font-semibold">My Profile</h2>
+      <div className="shadow-md p-7 bg-white rounded-md">
+        <h2 className="text-lg font-semibold text-blue">My Profile</h2>
         <div className="p-4 border-gray border-[1px] rounded-md mt-5 bg-white shadow-sm">
           <h3 className="text-md font-semibold">{session?.user.name}</h3>
           <p className="text-gray text-sm">{session?.user.email}</p>
@@ -33,7 +33,6 @@ export default async function Settings() {
             Statistics By Category
           </h3>
           <DataTable columns={columns} data={quizStats} />
-          {/* <StatsTable allQuizzes={allQuizzes} /> */}
         </div>
       </div>
     </div>

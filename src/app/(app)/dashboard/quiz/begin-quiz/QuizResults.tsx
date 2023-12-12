@@ -1,5 +1,5 @@
-import { replaceSpecialCharacters } from '@/lib/utils';
 import { useRouter } from 'next/navigation';
+import { decode } from 'html-entities';
 
 type Props = {
   data: Question[];
@@ -19,14 +19,14 @@ const QuizResults = (props: Props) => {
   const correctionsMade = data.map((oneQuestion, index) => (
     <div key={`${oneQuestion.correct_answer} ${index}`} className="">
       <h3 className="font-semibold">
-        {index + 1}. {replaceSpecialCharacters(oneQuestion.question)}
+        {index + 1}. {decode(oneQuestion.question)}
       </h3>
 
       {oneQuestion.choices.map((answer) => (
         <ul key={answer}>
           <li className="border-2 py-3 border-custom-black px-5 my-3 rounded-md">
             <span className="flex gap-3">
-              {replaceSpecialCharacters(answer)}
+              {decode(answer)}
               {answer === data[index].correct_answer && userChoice[index] && (
                 <svg
                   xmlns="http://www.w3.org/2000/svg"

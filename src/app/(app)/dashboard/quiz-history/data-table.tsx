@@ -60,7 +60,7 @@ export function DataTable<TData, TValue>({
   });
 
   return (
-    <div className="shadow-xl p-7 bg-white rounded-xl">
+    <div className="shadow-md p-7 bg-white rounded-md">
       <div className="flex flex-wrap items-center justify-between py-4">
         <div className="text-blue">
           <h2 className="text-lg font-bold">YOUR HISTORY</h2>
