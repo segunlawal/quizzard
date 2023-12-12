@@ -13,14 +13,16 @@ export default async function Register() {
   }
   return (
     <div className="bg-indigo-100 h-screen w-screen flex justify-center items-center flex-col">
-      <Image
-        src="/assets/logo.svg"
-        alt="logo"
-        height={0}
-        width={0}
-        style={{ width: '200px', height: 'auto' }}
-        priority
-      />
+      <Link href="/">
+        <Image
+          src="/assets/logo.svg"
+          alt="logo"
+          height={0}
+          width={0}
+          style={{ width: '200px', height: 'auto' }}
+          priority
+        />
+      </Link>
       <div className="mt-5 w-full sm:w-[500px]">
         <div className="sm:shadow-xl p-7  sm:bg-white rounded-xl">
           <h1 className="font-semibold text-xl">Get Started</h1>

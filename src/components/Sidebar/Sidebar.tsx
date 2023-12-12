@@ -101,7 +101,7 @@ const Sidebar = () => {
         </ul>
       </nav>
       <button
-        className="pb-3 flex items-center gap-x-2 text-sm text-white"
+        className="lg:pb-3 pb-16 flex items-center gap-x-2 text-sm text-white"
         onClick={() => {
           signOut();
         }}
