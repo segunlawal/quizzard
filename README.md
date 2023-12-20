@@ -24,6 +24,10 @@ https://quizzardpro.vercel.app/
 
 NextJS, TypeScript, Tailwind CSS, Prisma, Supabase
 
+## API Reference
+
+https://opentdb.com/api_config.php
+
 ## About QUIZZARD
 
 Enjoy your quiz experience with Quizzard. Quizzard offers intuitive quiz-taking interface, a leaderboard and results tracking.
